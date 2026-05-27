@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / Claude
+.claude/
+
+# Local dev server
+serve.py
+
+# Old/unused files
+index1.html
+brockmann-complete-desktop.zip
+
+# Unused logo variants
+NOUVEAULOGO.png
+NOUVEAULOGO2.png
+logo_alan.png
+logo_deepmind_NEW.png
+logo_doctolib.png
+logo_french_care.jpg
+logo_googlehealth.png
+logo_nabla.jpg
+logo_primary_blanc.svg
+logo_primary_purple.svg
+logo_primaryday_blanc.svg
+logo_primaryday_purple.svg
+logo_withings.png
+logo_withings_NEW.png
