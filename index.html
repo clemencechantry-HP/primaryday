@@ -3,855 +3,1209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PRIMARY DAY — 25 septembre 2026 · Paris</title>
+  <title>PRIMARY DAY — 18 septembre 2026 · Paris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
   <style>
 
-    /* ── RESET ──────────────────────────────────────────────────────── */
+    /* ── BROCKMANN ─────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Brockmann';
+      src: url('brockmann-complete-desktop.woff2') format('woff2'),
+           url('brockmann-complete-desktop.woff') format('woff');
+    }
+
+    /* ── RESET ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
+    /* ── VARIABLES ─────────────────────────────────────────── */
+    :root {
+      --bg-dark:       #0D1117;
+      --bg-dark-alt:   #161B22;
+      --bg-light:      #F8F7F4;
+      --bg-light-alt:  #EFEDE8;
+      --accent-gold:   #C8960C;
+      --accent-violet: #7C3AED;
+      --text-light:    #F0F0F0;
+      --text-dark:     #1A1A1A;
+      --text-muted:    #9CA3AF;
+      --border-dark:   rgba(255,255,255,0.07);
+      --border-light:  rgba(0,0,0,0.08);
+    }
+
     body {
-      background: #080C14;
-      color: #FFFFFF;
-      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'DM Sans', sans-serif;
       font-weight: 400;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* ── VARIABLES ──────────────────────────────────────────────────── */
-    :root {
-      --bg:       #080C14;
-      --surface:  #111827;
-      --surface2: #1F2937;
-      --text:     #FFFFFF;
-      --muted:    rgba(255,255,255,0.5);
-      --accent:   #C8960C;
-      --purple:   #7C3AED;
-      --border:   rgba(255,255,255,0.08);
+    /* ── SYSTÈME TYPOGRAPHIQUE GLOBAL ──────────────────────── */
+    h1, h2, h3 {
+      font-family: 'Brockmann', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+    h1 { font-size: clamp(2.8rem, 5vw, 4rem); }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+    h3 { font-size: clamp(1rem, 1.5vw, 1.2rem); }
+    .block-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #6B7280;
+    }
+    .meta-info {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.02em;
+    }
+    .meta-info-light {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(26,26,26,0.5);
+      letter-spacing: 0.02em;
     }
 
-    /* ── NAVBAR ─────────────────────────────────────────────────────── */
+    /* ── GRAIN TEXTURE on dark sections ────────────────────── */
+    .grain { position: relative; }
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+    .grain > * { position: relative; z-index: 1; }
+
+    /* ── NAV ───────────────────────────────────────────────── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8,12,20,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(13,17,23,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dark);
       height: 60px;
-      padding: 0 48px;
+      padding: 0 6%;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 28px;
-      letter-spacing: -0.02em;
-      color: #FFFFFF;
-      text-decoration: none;
-      line-height: 1;
+    .nav-primary-logo {
+      height: 18px;
+      width: auto;
+      opacity: 0.65;
+      filter: brightness(0) invert(1);
     }
-    .nav-logo .y { color: #C8960C; }
-    .nav-cta {
-      background: #C8960C;
-      color: #080C14;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 10px 20px;
+    .btn-gold {
+      display: inline-block;
+      background: var(--accent-gold);
+      color: #0D1117;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 20px;
       border-radius: 6px;
       text-decoration: none;
-      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
       white-space: nowrap;
     }
-    .nav-cta:hover { background: #B8850B; }
+    .btn-gold:hover { background: #B8850B; transform: translateY(-1px); }
 
-    /* ── HERO ───────────────────────────────────────────────────────── */
+    /* ── HERO — canvas mesh ────────────────────────────────── */
     #hero {
-      background: #080C14;
-      padding: 100px 8% 80px;
+      position: relative;
+      background: var(--bg-dark);
+      padding: 80px 6% 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+    .hero-cartouche {
+      display: inline-block;
+      border: 1px solid rgba(200,150,12,0.5);
+      border-radius: 4px;
+      padding: 6px 16px;
+      font-family: 'Brockmann', sans-serif;
+      font-weight: 600;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.6);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .hero-meta-sep { opacity: 0.3; }
+    .hero-theme {
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      line-height: 1.05;
+      color: #F0F0F0;
+    }
+    .hero-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.55);
+      max-width: 500px;
+    }
+    #hero .btn-gold {
+      color: #1A1A1A;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: 8px;
+    }
+    .hero-photos {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      height: 320px;
+      margin-top: 40px;
+      width: 100%;
+    }
+    .hero-photos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* ── MANIFESTO — light ─────────────────────────────────── */
+    #manifesto {
+      background:
+        radial-gradient(ellipse at 80% 50%, rgba(124,58,237,0.10) 0%, transparent 55%),
+        var(--bg-dark);
+      padding: 100px 80px;
       display: flex;
       align-items: center;
       gap: 80px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .hero-left {
-      flex: 55%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
-
-    /* Logo CSS — deux lignes avec Y partagé */
-    .logo-pyd {
-      display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 90px;
-      letter-spacing: -0.02em;
-      line-height: 0.82;
-      white-space: nowrap;
-    }
-    .logo-line-day     { display: block; text-align: right; }
-    .logo-line-primary { display: block; text-align: left; }
-    .logo-accent       { color: #C8960C; }
-
-    .hero-tagline {
-      font-style: italic;
-      font-size: 15px;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-    .hero-meta {
-      font-weight: 500;
-      font-size: 13px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .hero-pitch {
-      font-size: 18px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.85);
-      max-width: 520px;
-    }
-    .btn-cta {
-      background: #C8960C;
-      color: #080C14;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      padding: 14px 28px;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s;
-    }
-    .btn-cta:hover { background: #B8850B; }
-
-    /* Fan photos */
-    .hero-right {
-      flex: 45%;
-      position: relative;
-      height: 420px;
-    }
-    .hero-right img {
-      position: absolute;
-      top: 40px;
-      left: 50%;
-      margin-left: -130px;
-      width: 260px;
-      height: 340px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .fan-1 { z-index: 3; transform: rotate(2deg)  translateX(20px); }
-    .fan-2 { z-index: 2; transform: rotate(-1deg) translateY(-20px); }
-    .fan-3 { z-index: 1; transform: rotate(3deg)  translateX(-10px) translateY(10px); }
-
-    /* ── SECTION 2 — CONVICTION ─────────────────────────────────────── */
-    #conviction {
-      background: #080C14;
-      padding: 100px 8%;
-      text-align: center;
-    }
-    .conviction-inner { max-width: 700px; margin: 0 auto; }
-    .conviction-line1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 52px;
-      line-height: 1.1;
-      color: #FFFFFF;
-    }
-    .conviction-line2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 52px;
-      line-height: 1.1;
-      color: #C8960C;
-    }
-    .conviction-body {
-      font-size: 18px;
+    .manifesto-text { flex: 1; max-width: 520px; }
+    .manifesto-p {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
       line-height: 1.7;
-      color: var(--muted);
-      margin-top: 40px;
+      color: #F0F0F0;
+    }
+    .manifesto-p-muted {
+      color: rgba(255,255,255,0.5);
+      margin-top: 16px;
+    }
+    .manifesto-quote {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .manifesto-quote-text {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #F0F0F0;
+    }
+    .manifesto-quote-attr {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .manifesto-quote-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .manifesto-quote-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+    .manifesto-quote-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
     }
 
-    /* ── SECTION 3 — THÈMES ─────────────────────────────────────────── */
+    /* ── THÈMES — light, grille typographique ───────────────── */
     #themes {
-      background: #111827;
-      padding: 80px 8%;
+      background: var(--bg-light);
+      padding: 60px 80px 80px;
+    }
+    .section-title-serif {
+      color: var(--text-dark);
+      margin-bottom: 48px;
+    }
+    #themes .section-title-serif {
+      color: #1A1A1A;
+      margin-bottom: 80px;
     }
     .themes-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 80px;
     }
-    .theme-card {
-      background: #080C14;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 36px;
-    }
-    .theme-card--dim { opacity: 0.5; }
-    .tag-pill {
+    .theme-tag {
       display: inline-block;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Brockmann', sans-serif;
       font-weight: 600;
-      font-size: 11px;
+      font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-radius: 20px;
-      padding: 4px 12px;
+      letter-spacing: 0.18em;
+      color: #C8960C;
+      border: 1px solid rgba(200,150,12,0.5);
+      border-radius: 4px;
+      padding: 3px 8px;
+      background: transparent;
+      margin-bottom: 16px;
     }
-    .tag-or     { background: rgba(200,150,12,0.1);   color: #C8960C; border: 1px solid rgba(200,150,12,0.3); }
-    .tag-purple { background: rgba(124,58,237,0.1);  color: #7C3AED; border: 1px solid rgba(124,58,237,0.3); }
-    .tag-muted  { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid rgba(255,255,255,0.1); }
-    .theme-card h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 26px;
-      line-height: 1.2;
-      margin-top: 20px;
-      color: #FFFFFF;
+    .theme-col-title {
+      font-family: 'Brockmann', sans-serif;
+      font-size: 18px;
+      color: #1A1A1A;
+      line-height: 1.35;
     }
-    .theme-card--dim h3 { color: rgba(255,255,255,0.4); }
-    .theme-card p {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--muted);
-      margin-top: 12px;
+    .theme-title {
+      margin-top: 0;
+      margin-bottom: 12px;
     }
-    .theme-card--dim p { color: rgba(255,255,255,0.3); }
+    .theme-subtitle {
+      margin-top: 0;
+      line-height: 1.7;
+    }
+    /* .theme-col-sub — style from .block-subtitle */
+    /* Séparateur gold animé thèmes → bénéfices */
+    .themes-benefices-sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C8960C, transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 800ms ease-out;
+    }
+    .themes-benefices-sep.visible {
+      transform: scaleX(1);
+    }
 
-    /* ── SECTION 4 — FORMAT ─────────────────────────────────────────── */
-    #format {
-      background: #080C14;
-      padding: 80px 8%;
+    /* ── BÉNÉFICES — light-alt, mosaïque ───────────────────── */
+    #benefices {
+      background: var(--bg-light-alt);
+      padding: 60px 80px 80px;
     }
-    .format-grid {
+    #benefices .section-title-serif {
+      color: #1A1A1A;
+      margin-bottom: 40px;
+    }
+    .benefices-mosaic {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
       gap: 16px;
-      max-width: 800px;
-      margin: 0 auto;
+      align-items: stretch;
     }
-    .format-item {
-      background: #111827;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
+    /* Bloc droit haut — photo seule */
+    .benefice-right-photo {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .benefice-right-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: saturate(0.85) contrast(1.05);
+    }
+    .benefice-right-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(200,150,12,0.06);
+      pointer-events: none;
+    }
+    /* Bloc droit bas — Voir plus loin */
+    .benefice-right-text {
+      background: #FFFFFF;
+      border-radius: 10px;
       padding: 28px;
       display: flex;
-      align-items: flex-start;
-      gap: 16px;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 300ms ease, box-shadow 300ms ease;
     }
-    .format-icon {
-      width: 40px;
-      height: 40px;
+    .benefice-right-text:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .benefice-trait {
+      width: 32px;
+      height: 2px;
+      background: #C8960C;
+      margin-bottom: 14px;
       flex-shrink: 0;
-      background: rgba(200,150,12,0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
     }
-    .format-item h4 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      color: #FFFFFF;
+    .benefice-right-text h3 {
+      font-family: 'Brockmann', sans-serif;
+      color: #1A1A1A;
+      line-height: 1.3;
     }
-    .format-item p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    /* ── SECTION 5 — ORGANISATIONS ──────────────────────────────────── */
-    #orgs {
-      background: #111827;
-      padding: 60px 8%;
-    }
-    .orgs-eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .orgs-logos {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 48px;
-    }
-    .orgs-logos img {
-      height: 32px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.45;
-      transition: opacity 0.2s;
-    }
-    .orgs-logos img:hover { opacity: 0.9; }
-    .org-text {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      color: var(--muted);
-      opacity: 0.45;
-      transition: opacity 0.2s;
-      cursor: default;
-    }
-    .org-text:hover { opacity: 0.9; }
-
-    /* ── SECTION 6 — LIEU ───────────────────────────────────────────── */
-    #lieu {
-      background: #080C14;
-      padding: 80px 8%;
-    }
-    .lieu-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 56px;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    .lieu-address {
-      font-size: 16px;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .lieu-mosaic {
+    .benefice-right-text p { margin-top: 8px; }
+    .benefice-card-sm {
+      background: #FFFFFF;
+      border-radius: 10px;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: 3fr 2fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      flex: 1;
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+    .benefice-card-sm:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .benefice-card-sm-photo-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px 0 0 10px;
+    }
+    .benefice-card-sm-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.85) contrast(1.05);
+    }
+    .benefice-card-sm-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(200,150,12,0.06);
+      pointer-events: none;
+    }
+    .benefice-card-sm-text {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    .benefice-trait-sm {
+      width: 32px;
+      height: 2px;
+      background: #C8960C;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+    .benefice-card-sm-text h3 {
+      font-family: 'Brockmann', sans-serif;
+      color: #1A1A1A;
+      line-height: 1.3;
+    }
+    .benefice-card-sm-text p { margin-top: 8px; }
+
+    /* ── FUGA — light, peek carousel bidirectionnel ─────────── */
+    #fuga {
+      background: var(--bg-light);
+      padding: 80px 6% 100px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .fuga-title {
+      font-family: 'Brockmann', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.15;
+      color: #1A1A1A;
+      margin-bottom: 14px;
+    }
+    .fuga-address {
+      display: flex;
+      align-items: center;
       gap: 6px;
-      height: 500px;
-      max-width: 1000px;
-      margin: 0 auto;
-      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+    .fuga-address svg { flex-shrink: 0; }
+    .fuga-desc { color: rgba(26,26,26,0.65); }
+
+    /* wrapper : SEUL endroit avec overflow:hidden — clip les slides qui débordent */
+    .fuga-carousel-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      border-radius: 10px;
+    }
+    /* track : flex row libre — PAS de overflow:hidden, PAS de width fixe */
+    .fuga-carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    /* slide = DIV wrapper à 85% du wrapper → la photo suivante dépasse de ~12% */
+    .fuga-slide {
+      flex: 0 0 85%;       /* flex-basis 85% = résolu contre la largeur du track */
+      margin-right: 3%;
+      height: 480px;
+      border-radius: 10px;
       overflow: hidden;
     }
-    .lieu-mosaic img {
+    /* l'image remplit 100% du div slide — c'est le div qui fixe la largeur */
+    .fuga-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .mosaic-main { grid-row: 1 / 3; }
-    .lieu-desc {
-      font-size: 17px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.7);
-      text-align: center;
-      max-width: 560px;
-      margin: 48px auto 0;
+    /* barre de navigation : absolute en bas, s'étire sur toute la largeur */
+    .fuga-nav {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none; /* le conteneur ne bloque pas les clics */
     }
-
-    /* ── SECTION 7 — PARTENAIRES ────────────────────────────────────── */
-    #partners {
-      background: #111827;
-      padding: 60px 8%;
-    }
-    .partners-eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .partners-logos {
+    .fuga-btn-prev,
+    .fuga-btn-next {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(13,17,23,0.6);
+      border: 1px solid rgba(200,150,12,0.4);
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
+      pointer-events: auto;
+      transition: background 200ms, transform 200ms, opacity 200ms;
     }
-    .partners-logos img {
-      height: 40px;
-      width: auto;
-      filter: invert(1) brightness(1.5);
-      opacity: 0.8;
+    .fuga-btn-prev:hover,
+    .fuga-btn-next:hover {
+      background: rgba(13,17,23,0.85);
+      transform: scale(1.08);
+    }
+    /* état désactivé : visible mais inerte */
+    .fuga-btn-prev.disabled,
+    .fuga-btn-next.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      cursor: default;
     }
 
-    /* ── SECTION 8 — REQUEST A SEAT ─────────────────────────────────── */
-    #request {
-      background: linear-gradient(135deg, #0D0A1E 0%, #1A0D2E 100%);
-      padding: 100px 8%;
-      text-align: center;
+    /* ── FORMULAIRE — dark + halo or, 2 colonnes ────────────── */
+    #form-section {
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(200,150,12,0.08) 0%, transparent 70%),
+        var(--bg-dark);
+      padding: 100px 80px;
     }
-    .request-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #7C3AED;
-      margin-bottom: 12px;
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
     }
-    .request-title-1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 64px;
-      line-height: 1.0;
-      color: #FFFFFF;
-      margin-bottom: 8px;
+    /* — colonne gauche : pitch */
+    .form-pitch-title {
+      font-family: 'Brockmann', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.15;
+      color: #F0F0F0;
     }
-    .request-title-2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 64px;
-      line-height: 1.0;
-      color: #C8960C;
-      margin-bottom: 32px;
-    }
-    .request-text {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto 48px;
+    .form-pitch-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 16px;
       line-height: 1.6;
     }
+    .form-bullets {
+      list-style: none;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-bullet {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .form-bullet span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: #F0F0F0;
+    }
+    /* — colonne droite : formulaire */
     .request-form {
-      max-width: 480px;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      text-align: left;
     }
-    .form-row {
+    .form-row-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
     .request-form input {
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
       border-radius: 8px;
       padding: 14px 16px;
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      color: #FFFFFF;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: #fff;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      box-sizing: border-box;
+      transition: border-color 0.2s;
     }
-    .request-form input::placeholder { color: rgba(255,255,255,0.3); }
-    .request-form input:focus {
-      border-color: #7C3AED;
-      box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    .request-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .request-form input:focus { border-color: #C8960C; }
+    .form-invite-sep {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 8px 0 0;
+    }
+    .form-invite-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: #C8960C;
+    }
+    .form-invite-hint {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+      margin-bottom: 4px;
     }
     .btn-submit {
       width: 100%;
       background: #C8960C;
-      color: #080C14;
-      font-family: 'Inter', sans-serif;
+      color: #1A1A1A;
+      font-family: 'DM Sans', sans-serif;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       padding: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: filter 0.2s, transform 0.15s;
       margin-top: 4px;
     }
-    .btn-submit:hover { background: #B8850B; }
+    .btn-submit:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .form-reassurance {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      line-height: 1.5;
+    }
 
-    /* ── FOOTER ─────────────────────────────────────────────────────── */
+    /* ── FOOTER ────────────────────────────────────────────── */
     footer {
-      background: #080C14;
-      padding: 40px 8%;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      background: var(--bg-dark);
+      padding: 36px 6%;
+      border-top: 1px solid var(--border-dark);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     footer span {
+      font-family: 'DM Sans', sans-serif;
       font-size: 13px;
-      color: var(--muted);
+      color: rgba(255,255,255,0.22);
     }
 
-    /* ── SHARED SECTION HELPERS ─────────────────────────────────────── */
-    .eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #C8960C;
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 42px;
-      line-height: 1.05;
-      color: #FFFFFF;
-    }
-    .section-centered { text-align: center; }
-    .section-mb { margin-bottom: 60px; }
-
-    /* ── ANIMATIONS ─────────────────────────────────────────────────── */
+    /* ── SCROLL ANIMATIONS ─────────────────────────────────── */
     .animate-in {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
     }
-    .animate-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .animate-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ─────────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-
-      #hero {
-        flex-direction: column;
-        padding: 60px 6% 60px;
-        gap: 48px;
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 0 5%;
+        grid-template-columns: 1fr auto;
       }
-      .hero-left { flex: none; width: 100%; }
-      .logo-pyd  { font-size: 56px; }
-      .hero-right {
-        flex: none;
-        width: 100%;
-        height: 280px;
-      }
-      .hero-right img {
-        width: 180px;
-        height: 240px;
-        top: 20px;
-        margin-left: -90px;
-      }
+      .nav-center { display: none; }
 
-      #conviction { padding: 80px 6%; }
-      .conviction-line1,
-      .conviction-line2 { font-size: 36px; }
-
-      #themes { padding: 60px 6%; }
-      .themes-grid { grid-template-columns: 1fr; }
-
-      #format { padding: 60px 6%; }
-      .format-grid { grid-template-columns: 1fr; }
-
-      #orgs     { padding: 48px 6%; }
-      .orgs-logos { gap: 28px; }
-
-      #lieu { padding: 60px 6%; }
-      .lieu-title { font-size: 40px; }
-      .lieu-mosaic {
+      #hero { padding: 64px 5% 56px; }
+      .hero-theme { font-size: clamp(2.2rem, 9vw, 3rem); }
+      .hero-meta { gap: 10px; }
+      .hero-photos {
         grid-template-columns: 1fr;
-        grid-template-rows: 200px 200px 200px;
         height: auto;
-        border-radius: 12px;
+        gap: 6px;
+        margin-top: 40px;
       }
-      .mosaic-main { grid-row: 1; }
+      .hero-photos img { height: 200px; border-radius: 8px; }
 
-      #partners { padding: 48px 6%; }
+      #manifesto { flex-direction: column; padding: 64px 5%; gap: 40px; }
+      .manifesto-text { max-width: 100%; }
 
-      #request  { padding: 80px 6%; }
-      .request-title-1,
-      .request-title-2 { font-size: 48px; }
-      .form-row { grid-template-columns: 1fr; }
+#themes, #benefices { padding: 48px 5%; }
+      #form-section { padding: 60px 5%; }
+      .form-grid { grid-template-columns: 1fr; gap: 48px; }
+      .themes-grid { grid-template-columns: 1fr; }
+      .benefices-mosaic { grid-template-columns: 1fr; }
+      .benefice-card-sm { grid-template-columns: 1fr 1fr; }
 
-      footer {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-        padding: 32px 6%;
-      }
+      #fuga { grid-template-columns: 1fr; padding: 72px 5%; gap: 40px; }
+      .fuga-slide { flex: 0 0 88%; height: 280px; }
+
+      footer { flex-direction: column; gap: 8px; text-align: center; padding: 28px 5%; }
+    }
+    @media (max-width: 540px) {
+      .benefices-row { grid-template-columns: 1fr; }
+      .form-row-2 { grid-template-columns: 1fr; }
     }
 
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════
+<!-- ════════════════════════════════
      NAV
-════════════════════════════════════════════════════ -->
+════════════════════════════════ -->
 <nav>
-  <a href="#" class="nav-logo">P<span class="y">Y</span>D</a>
-  <a href="#request" class="nav-cta">Demander une invitation →</a>
+  <img src="logo_primary_blanc.svg" alt="Primary" class="nav-primary-logo" />
+  <a href="#form-section" class="btn-gold">Demander une invitation →</a>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 1 — HERO
-════════════════════════════════════════════════════ -->
-<section id="hero">
+<!-- ════════════════════════════════
+     HERO — canvas mesh
+════════════════════════════════ -->
+<section id="hero" class="grain">
 
-  <div class="hero-left">
-    <!-- Logo CSS deux lignes, Y partagé -->
-    <div class="logo-pyd">
-      <span class="logo-line-day">DA<span class="logo-accent">Y</span></span>
-      <span class="logo-line-primary">PRIMAR<span class="logo-accent">Y</span></span>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+
+    <p class="hero-cartouche animate-in">Primary Day · 2026</p>
+
+    <div class="hero-meta meta-info animate-in" style="transition-delay:.06s">
+      <span class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        18 septembre
+      </span>
+      <span class="hero-meta-sep">·</span>
+      <span class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22S5 15.5 5 10a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="10" r="3"/></svg>
+        Paris 8ème
+      </span>
+      <span class="hero-meta-sep">·</span>
+      <span class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Sur invitation
+      </span>
     </div>
 
-    <p class="hero-tagline">Ahead of primary care</p>
+    <h1 class="hero-theme animate-in" style="transition-delay:.12s">Augmented Care</h1>
 
-    <p class="hero-meta">25 SEPTEMBRE 2026 &nbsp;·&nbsp; PARIS 8ÈME &nbsp;·&nbsp; SUR INVITATION</p>
-
-    <p class="hero-pitch">
-      PRIMARY DAY est le nouveau rendez-vous des médecins généralistes
-      qui veulent exercer autrement, et mieux.
+    <p class="hero-sub animate-in" style="transition-delay:.18s">
+      Médecins, chercheurs et entrepreneurs enfin réunis<br>pour façonner l'avenir du soin.
     </p>
 
-    <a href="#request" class="btn-cta">Demander une invitation →</a>
+    <a href="#form-section" class="btn-gold animate-in" style="transition-delay:.24s">
+      Demander une invitation →
+    </a>
+
   </div>
 
-  <div class="hero-right">
-    <img src="5Y6A6134.jpg"    alt="" class="fan-1" />
-    <img src="0N6A6709.jpg"    alt="" class="fan-2" />
-    <img src="5Y6A6187_2.jpg"  alt="" class="fan-3" />
+  <div class="hero-photos">
+    <img src="5Y6A6134.jpg"   alt="" class="hero-photo" />
+    <img src="0N6A6709.jpg"   alt="" class="hero-photo" />
+    <img src="5Y6A6187_2.jpg" alt="" class="hero-photo" />
   </div>
 
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 2 — LA CONVICTION
-════════════════════════════════════════════════════ -->
-<section id="conviction">
-  <div class="conviction-inner">
-    <p class="conviction-line1 animate-in">
-      Il n'existait pas de rendez-vous pour les médecins généralistes qui regardent devant.
+<!-- ════════════════════════════════
+     MANIFESTO — light
+════════════════════════════════ -->
+<section id="manifesto">
+
+  <div class="manifesto-text">
+    <p class="manifesto-p animate-in">
+      Le soin primaire de demain se dessine aujourd'hui.<br>L'IA entre dans la consultation. La prévention redéfinit le rôle du médecin. Le collectif devient le nouveau mode d'exercice.
     </p>
-    <p class="conviction-line2 animate-in" style="transition-delay:0.08s">
-      PRIMARY DAY est ce rendez-vous.
-    </p>
-    <p class="conviction-body animate-in" style="transition-delay:0.16s">
-      Ni congrès, ni formation. Des conversations entre médecins de terrain
-      et experts — construites autour des questions qui transforment la pratique.
+    <p class="manifesto-p-muted block-subtitle animate-in" style="transition-delay:.1s">
+      PRIMARY DAY rassemble celles et ceux qui veulent garder une longueur d'avance.
     </p>
   </div>
+
+  <div class="manifesto-quote animate-in" style="transition-delay:.15s">
+    <p class="manifesto-quote-text">
+      « L'IA est plus puissante quand le contexte est bien posé. Et poser le contexte, c'est précisément le rôle du généraliste. »
+    </p>
+    <div class="manifesto-quote-attr">
+      <img src="Yann.png" alt="Yann Fleureau" class="manifesto-quote-avatar" />
+      <div>
+        <p class="manifesto-quote-name">Yann Fleureau</p>
+        <p class="manifesto-quote-role">Founder @ Cardiologs</p>
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 3 — LES THÈMES
-════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════
+     THÈMES — light
+════════════════════════════════ -->
 <section id="themes">
-  <p class="eyebrow section-centered animate-in">CE DONT ON PARLERA</p>
-  <h2 class="section-title section-centered section-mb animate-in" style="transition-delay:0.08s">
-    Trois grandes transformations
-  </h2>
+
+  <h2 class="section-title-serif animate-in">Les enjeux au cœur de cette édition.</h2>
+
   <div class="themes-grid">
 
-    <div class="theme-card animate-in" style="border-top:3px solid #C8960C;">
-      <span class="tag-pill tag-or">IA &amp; CLINIQUE</span>
-      <h3>Algorithmes, données, décision clinique</h3>
-      <p>L'IA au cœur de la consultation — ce qui change vraiment dans la pratique, maintenant.</p>
+    <div class="theme-col" data-theme-delay="0">
+      <span class="theme-tag">IA &amp; CLINIQUE</span>
+      <h3 class="theme-col-title theme-title">Algorithmes, données, décision clinique</h3>
+      <p class="theme-col-sub block-subtitle theme-subtitle">L'IA entre dans la consultation. Comment elle change concrètement le rôle du médecin.</p>
     </div>
 
-    <div class="theme-card animate-in" style="transition-delay:0.08s; border-top:3px solid #7C3AED;">
-      <span class="tag-pill tag-purple">LONGÉVITÉ</span>
-      <h3>Longévité, prévention, médecine prédictive</h3>
-      <p>Le généraliste au cœur du bien vieillir — la révolution silencieuse de la médecine prédictive.</p>
+    <div class="theme-col" data-theme-delay="150">
+      <span class="theme-tag">LONGÉVITÉ</span>
+      <h3 class="theme-col-title theme-title">Longévité, prévention, médecine prédictive</h3>
+      <p class="theme-col-sub block-subtitle theme-subtitle">Le généraliste au cœur du bien vieillir, acteur clé d'une médecine qui anticipe.</p>
     </div>
 
-    <div class="theme-card theme-card--dim animate-in" style="transition-delay:0.16s; border-top:3px solid rgba(255,255,255,0.2);">
-      <span class="tag-pill tag-muted">À VENIR</span>
-      <h3>Troisième grand thème</h3>
-      <p>Annoncé prochainement.</p>
+    <div class="theme-col" data-theme-delay="300">
+      <span class="theme-tag">SPÉCIALISATION</span>
+      <h3 class="theme-col-title theme-title">Adapter sa pratique aux nouvelles demandes de soin</h3>
+      <p class="theme-col-sub block-subtitle theme-subtitle">Médecine de la femme, du sommeil, du sport... Comment se différencier et exercer autrement.</p>
     </div>
 
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 4 — LE FORMAT
-════════════════════════════════════════════════════ -->
-<section id="format">
-  <p class="eyebrow section-centered animate-in">LE FORMAT</p>
-  <h2 class="section-title section-centered section-mb animate-in" style="transition-delay:0.08s">
-    Un format qui ne ressemble à rien d'autre
-  </h2>
-  <div class="format-grid">
+<div class="themes-benefices-sep" id="themes-sep"></div>
 
-    <div class="format-item animate-in">
-      <div class="format-icon">🕐</div>
-      <div>
-        <h4>Demi-journée + soirée</h4>
-        <p>14h jusqu'à minuit</p>
+<!-- ════════════════════════════════
+     BÉNÉFICES — light, mosaïque
+════════════════════════════════ -->
+<section id="benefices">
+
+  <h2 class="section-title-serif animate-in">Pourquoi en être ?</h2>
+
+  <div class="benefices-mosaic">
+
+    <!-- Ligne 1 gauche : Faire progresser -->
+    <div class="benefice-card-sm" data-benefice-delay="0">
+      <div class="benefice-card-sm-photo-wrap">
+        <img src="tips3.png" alt="" style="object-position: center top" />
+      </div>
+      <div class="benefice-card-sm-text">
+        <div class="benefice-trait-sm"></div>
+        <h3>Faire progresser sa pratique</h3>
+        <p class="block-subtitle">Ce que font concrètement les médecins qui ont sauté le pas, applicable dès demain.</p>
       </div>
     </div>
 
-    <div class="format-item animate-in" style="transition-delay:0.08s">
-      <div class="format-icon">👥</div>
-      <div>
-        <h4>150 invités sélectionnés</h4>
-        <p>Sur invitation nominative</p>
+    <!-- Ligne 1 droite : photo voix2 -->
+    <div class="benefice-right-photo" data-benefice-delay="150">
+      <img src="voix2.png" alt="" />
+    </div>
+
+    <!-- Ligne 2 gauche : Se retrouver -->
+    <div class="benefice-card-sm" data-benefice-delay="300">
+      <div class="benefice-card-sm-photo-wrap">
+        <img src="soiree5.png" alt="" style="object-position: center top" />
+      </div>
+      <div class="benefice-card-sm-text">
+        <div class="benefice-trait-sm"></div>
+        <h3>Se retrouver</h3>
+        <p class="block-subtitle">Un cadre intime, une bonne ambiance, des pairs curieux et animés comme vous.</p>
       </div>
     </div>
 
-    <div class="format-item animate-in" style="transition-delay:0.16s">
-      <div class="format-icon">💬</div>
-      <div>
-        <h4>Conversations sans slides</h4>
-        <p>Entre experts et médecins de terrain</p>
+    <!-- Ligne 2 droite : Voir plus loin -->
+    <div class="benefice-right-text" data-benefice-delay="450">
+      <div class="benefice-trait"></div>
+      <h3>Voir plus loin</h3>
+      <p class="block-subtitle">Chercheurs, entrepreneurs et médecins qui ouvrent de nouvelles perspectives.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════
+     FUGA — light · carrousel peek
+════════════════════════════════ -->
+<section id="fuga">
+
+  <div class="fuga-text">
+    <h2 class="fuga-title animate-in">FUGA Space Monceau</h2>
+    <div class="fuga-address meta-info-light animate-in" style="transition-delay:.06s">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22S5 15.5 5 10a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="10" r="3"/></svg>
+      32 rue de Monceau · Paris 8ème
+    </div>
+    <p class="fuga-desc block-subtitle animate-in" style="transition-delay:.12s">
+      150 places. Un auditorium rétro-futuriste conçu pour les grandes conversations. Un bar pour les prolonger jusqu'au bout de la nuit.
+    </p>
+  </div>
+
+  <div class="fuga-carousel-wrapper">
+    <div class="fuga-carousel-track" id="fugaTrack">
+      <div class="fuga-slide"><img src="auditorium.jpg" alt="Auditorium FUGA" /></div>
+      <div class="fuga-slide"><img src="bar.png" alt="Bar FUGA" /></div>
+      <div class="fuga-slide"><img src="dj_booth.jpg" alt="Foyer FUGA" /></div>
+    </div>
+    <div class="fuga-nav">
+      <button class="fuga-btn-prev disabled" id="fugaBtnPrev" aria-label="Photo précédente">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="fuga-btn-next" id="fugaBtnNext" aria-label="Photo suivante">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════
+     FORMULAIRE — dark · halo or · 2 colonnes
+════════════════════════════════ -->
+<section id="form-section" class="grain">
+
+  <div class="form-grid">
+
+    <!-- Colonne gauche — pitch -->
+    <div class="animate-in">
+      <h2 class="form-pitch-title">Soyez des nôtres.</h2>
+      <p class="form-pitch-sub">Les places sont limitées, demandez votre invitation dès maintenant.</p>
+      <ul class="form-bullets">
+        <li class="form-bullet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Tables rondes &amp; conférences</span>
+        </li>
+        <li class="form-bullet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Cocktail &amp; soirée</span>
+        </li>
+        <li class="form-bullet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Gratuit pour les médecins</span>
+        </li>
+        <li class="form-bullet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>150 places</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Colonne droite — formulaire -->
+    <form class="request-form animate-in" action="#" method="POST" novalidate style="transition-delay:.1s">
+
+      <div class="form-row-2">
+        <input type="text"  name="prenom"    placeholder="Prénom *" />
+        <input type="text"  name="nom"       placeholder="Nom *" />
       </div>
-    </div>
+      <input type="email"   name="email"     placeholder="Email professionnel *" />
+      <input type="text"    name="specialite" placeholder="Spécialité *" />
 
-    <div class="format-item animate-in" style="transition-delay:0.24s">
-      <div class="format-icon">📍</div>
-      <div>
-        <h4>FUGA Space · Paris 8ème</h4>
-        <p>Auditorium rétro-futuriste</p>
+      <hr class="form-invite-sep" />
+      <p class="form-invite-label">Invitez un confrère</p>
+      <p class="form-invite-hint">Vous pouvez inviter un confrère. Son invitation sera liée à la vôtre.</p>
+      <div class="form-row-2">
+        <input type="text"  name="c_prenom" placeholder="Prénom &amp; Nom" />
+        <input type="email" name="c_email"  placeholder="Email" />
       </div>
-    </div>
+
+      <button type="submit" class="btn-submit">Envoyer ma demande →</button>
+      <p class="form-reassurance">Votre demande sera examinée sous 72h. Nous vous répondrons par email.</p>
+
+    </form>
 
   </div>
+
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     SECTION 5 — ORGANISATIONS DE RÉFÉRENCE
-════════════════════════════════════════════════════ -->
-<section id="orgs">
-  <p class="orgs-eyebrow animate-in">DES CONVERSATIONS AU NIVEAU DE CE QUI SE FAIT DE MIEUX</p>
-  <div class="orgs-logos animate-in" style="transition-delay:0.08s">
-
-    <img src="https://logo.clearbit.com/doctolib.fr" alt="Doctolib"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
-    <span class="org-text" style="display:none">Doctolib</span>
-
-    <img src="https://logo.clearbit.com/nabla.com" alt="Nabla"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
-    <span class="org-text" style="display:none">Nabla</span>
-
-    <img src="https://logo.clearbit.com/withings.com" alt="Withings"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
-    <span class="org-text" style="display:none">Withings</span>
-
-    <img src="https://logo.clearbit.com/alan.com" alt="Alan"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
-    <span class="org-text" style="display:none">Alan</span>
-
-    <span class="org-text">Google Health</span>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     SECTION 6 — LE LIEU
-════════════════════════════════════════════════════ -->
-<section id="lieu">
-  <p class="eyebrow section-centered animate-in">LE LIEU</p>
-  <h2 class="lieu-title animate-in" style="transition-delay:0.08s">FUGA Space Monceau</h2>
-  <p class="lieu-address animate-in" style="transition-delay:0.16s">32 rue de Monceau · Paris 8ème</p>
-  <div class="lieu-mosaic animate-in" style="transition-delay:0.24s">
-    <img src="auditorium.jpg" alt="Auditorium FUGA Space" class="mosaic-main" />
-    <img src="dj_booth.jpg"   alt="Foyer FUGA Space" />
-    <img src="bar.png"        alt="Bar FUGA Space" />
-  </div>
-  <p class="lieu-desc animate-in">
-    Un auditorium rétro-futuriste. Un foyer speakeasy.
-    Un espace qui dit, avant même que ça commence,
-    que PRIMARY DAY n'est pas un congrès médical.
-  </p>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     SECTION 7 — PARTENAIRES
-════════════════════════════════════════════════════ -->
-<section id="partners">
-  <p class="partners-eyebrow animate-in">AVEC LE SOUTIEN DE</p>
-  <div class="partners-logos animate-in" style="transition-delay:0.08s">
-    <img src="logo-BPI.png"              alt="BPIFrance" />
-    <img src="Logo_french_care_new.svg"  alt="La French Care" />
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     SECTION 8 — REQUEST A SEAT
-════════════════════════════════════════════════════ -->
-<section id="request">
-  <p class="request-eyebrow animate-in">INVITATION UNIQUEMENT</p>
-  <h2 class="request-title-1 animate-in" style="transition-delay:0.08s">Demander</h2>
-  <h2 class="request-title-2 animate-in" style="transition-delay:0.16s">une invitation</h2>
-  <p class="request-text animate-in" style="transition-delay:0.24s">
-    PRIMARY DAY est sur invitation uniquement. Les places sont limitées
-    à 150 participants. Nous reviendrons vers vous sous 72h.
-  </p>
-  <form class="request-form animate-in" action="#" method="POST"
-        novalidate style="transition-delay:0.32s">
-    <div class="form-row">
-      <input type="text"  name="prenom"    placeholder="Prénom *" />
-      <input type="text"  name="nom"       placeholder="Nom *" />
-    </div>
-    <input type="email"   name="email"     placeholder="Email professionnel *" />
-    <input type="text"    name="specialite" placeholder="Spécialité / Structure *" />
-    <button type="submit" class="btn-submit">Envoyer ma demande →</button>
-  </form>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
+<!-- ════════════════════════════════
      FOOTER
-════════════════════════════════════════════════════ -->
+════════════════════════════════ -->
 <footer>
-  <span>PRIMARY DAY · 25 septembre 2026 · Paris 8ème</span>
-  <span>Un événement Primary · helloprimary.care</span>
+  <span>© PRIMARY DAY 2026</span>
+  <span>helloprimary.care</span>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════
-     JAVASCRIPT
-════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════
+     JS
+════════════════════════════════ -->
 <script>
-  /* Intersection Observer — scroll animations */
+  /* Hero — stagger content + photos on load */
+  document.addEventListener('DOMContentLoaded', function () {
+    /* Content elements: cartouche, meta, title, sub, CTA */
+    var heroEls = document.querySelectorAll('.hero-content .animate-in');
+    heroEls.forEach(function (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1)';
+    });
+    heroEls.forEach(function (el, i) {
+      var delay = i * 80;
+      setTimeout(function () {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, delay);
+    });
+
+    /* Photos */
+    var photos = document.querySelectorAll('.hero-photo');
+    photos.forEach(function (photo) {
+      photo.style.opacity = '0';
+      photo.style.transform = 'translateY(20px)';
+      photo.style.transition = 'opacity 600ms ease-out, transform 600ms ease-out';
+    });
+    photos.forEach(function (photo, i) {
+      setTimeout(function () {
+        photo.style.opacity = '1';
+        photo.style.transform = 'translateY(0)';
+      }, 300 + i * 150);
+    });
+  });
+
+  /* Hero canvas — animated mesh orbs */
+  (function () {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+
+    /* 3 orbs: violet / blue / indigo */
+    var orbs = [
+      { x: 0.70, y: 0.22, r: 0.44, rgb: '124,58,237',  a: 0.17, phx: 0.0, phy: 0.0 },
+      { x: 0.26, y: 0.62, r: 0.40, rgb: '59,130,246',  a: 0.15, phx: 1.8, phy: 2.4 },
+      { x: 0.80, y: 0.75, r: 0.36, rgb: '99,102,241',  a: 0.16, phx: 3.3, phy: 1.1 }
+    ];
+
+    var T  = 35;   /* drift period in seconds */
+    var start = null;
+
+    function resize() {
+      var hero = canvas.parentElement;
+      canvas.width  = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function draw(ts) {
+      if (!start) start = ts;
+      var t = (ts - start) / 1000;
+      var W = canvas.width, H = canvas.height;
+
+      ctx.clearRect(0, 0, W, H);
+
+      orbs.forEach(function (o) {
+        var dx = 0.09 * Math.sin(2 * Math.PI * t / T       + o.phx);
+        var dy = 0.07 * Math.cos(2 * Math.PI * t / T * 1.4 + o.phy);
+        var cx = (o.x + dx) * W;
+        var cy = (o.y + dy) * H;
+        var radius = o.r * Math.min(W, H);
+
+        var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        g.addColorStop(0,    'rgba(' + o.rgb + ',' + o.a + ')');
+        g.addColorStop(0.45, 'rgba(' + o.rgb + ',' + (o.a * 0.45) + ')');
+        g.addColorStop(1,    'rgba(' + o.rgb + ',0)');
+
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+  })();
+
+  /* Scroll reveal */
   (function () {
     var els = document.querySelectorAll('.animate-in');
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
+    var io  = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* Theme cols reveal — stagger */
+  document.querySelectorAll('.theme-col').forEach((col, i) => {
+    col.style.opacity = '0';
+    col.style.transform = 'translateY(20px)';
+    col.style.transition = `opacity 600ms ease-out ${i * 150}ms, transform 600ms ease-out ${i * 150}ms`;
+  });
+
+  setTimeout(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    els.forEach(function (el) { observer.observe(el); });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.theme-col').forEach(col => observer.observe(col));
+  }, 100);
+
+  /* Séparateur gold thèmes → bénéfices */
+  (function () {
+    var sep = document.getElementById('themes-sep');
+    if (!sep) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { sep.classList.add('visible'); io.unobserve(sep); }
+      });
+    }, { threshold: 0.5 });
+    io.observe(sep);
   })();
 
-  /* Formulaire — validation custom, pas de popup natif */
+  /* Benefice reveal — stagger */
+  (function () {
+    var items = document.querySelectorAll('.benefice-card-sm, .benefice-right-photo, .benefice-right-text');
+    items.forEach(function (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        var delay = parseInt(el.getAttribute('data-benefice-delay') || '0', 10);
+        setTimeout(function () {
+          el.style.transition = 'opacity 600ms ease-out, transform 600ms ease-out';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          setTimeout(function () {
+            el.style.transition = '';
+            el.style.opacity = '';
+            el.style.transform = '';
+          }, 660);
+        }, delay);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.1 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* Form validation */
   (function () {
     var form = document.querySelector('.request-form');
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var inputs = form.querySelectorAll('input');
-      var valid = true;
-      inputs.forEach(function (inp) {
+      var fields = ['prenom','nom','email','specialite'];
+      var ok = true;
+      fields.forEach(function (n) {
+        var inp = form.querySelector('[name="' + n + '"]');
+        if (!inp) return;
         if (!inp.value.trim()) {
           inp.style.borderColor = '#C8960C';
-          valid = false;
+          ok = false;
         } else {
           inp.style.borderColor = '';
         }
       });
-      if (!valid) return;
+      if (!ok) return;
       form.innerHTML =
-        '<p style="font-family:Inter,sans-serif; font-size:17px; ' +
-        'color:#C8960C; font-style:italic; text-align:center; padding:32px 0;">' +
+        '<p style="font-family:\'DM Sans\',sans-serif;font-weight:600;font-size:1.1rem;' +
+        'color:#C8960C;text-align:center;padding:56px 0;line-height:1.6;">' +
         'Merci. Nous reviendrons vers vous sous 72h.</p>';
     });
+  })();
+
+  /* FUGA — peek carousel bidirectionnel */
+  (function () {
+    var track   = document.getElementById('fugaTrack');
+    var btnPrev = document.getElementById('fugaBtnPrev');
+    var btnNext = document.getElementById('fugaBtnNext');
+    if (!track || !btnPrev || !btnNext) return;
+
+    var slides  = track.querySelectorAll('.fuga-slide');
+    var total   = slides.length;
+    var current = 0;
+
+    function update() {
+      var slideW = slides[0].offsetWidth + parseFloat(window.getComputedStyle(slides[0]).marginRight);
+      track.style.transform = 'translateX(-' + (current * slideW) + 'px)';
+
+      /* Prev : désactivé sur la 1ère */
+      if (current === 0) {
+        btnPrev.classList.add('disabled');
+      } else {
+        btnPrev.classList.remove('disabled');
+      }
+
+      /* Next : désactivé sur la dernière */
+      if (current >= total - 1) {
+        btnNext.classList.add('disabled');
+      } else {
+        btnNext.classList.remove('disabled');
+      }
+    }
+
+    btnPrev.addEventListener('click', function () {
+      if (current > 0) { current--; update(); }
+    });
+
+    btnNext.addEventListener('click', function () {
+      if (current < total - 1) { current++; update(); }
+    });
+
+    /* état initial */
+    update();
   })();
 </script>
 
