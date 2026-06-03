@@ -103,10 +103,9 @@
       justify-content: space-between;
     }
     .nav-primary-logo {
-      height: 18px;
+      height: 28px;
       width: auto;
-      opacity: 0.65;
-      filter: brightness(0) invert(1);
+      opacity: 0.9;
     }
     .btn-gold {
       display: inline-block;
@@ -229,6 +228,8 @@
       color: #F0F0F0;
     }
     .manifesto-p-muted {
+      font-size: 1.1rem;
+      line-height: 1.7;
       color: rgba(255,255,255,0.5);
       margin-top: 16px;
     }
@@ -348,12 +349,28 @@
       align-items: stretch;
     }
     /* Bloc droit haut — photo seule */
-    .benefice-right-photo {
+    /* Bloc droit — pleine hauteur, photo + texte */
+    .benefice-right-tall {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      background: #FFFFFF;
       border-radius: 10px;
       overflow: hidden;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 300ms ease, box-shadow 300ms ease;
     }
-    .benefice-right-photo img {
+    .benefice-right-tall:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .benefice-right-tall-photo {
+      flex: 0 0 50%;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .benefice-right-tall-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -361,26 +378,19 @@
       display: block;
       filter: saturate(0.85) contrast(1.05);
     }
-    .benefice-right-photo::after {
+    .benefice-right-tall-photo::after {
       content: '';
       position: absolute;
       inset: 0;
       background: rgba(200,150,12,0.06);
       pointer-events: none;
     }
-    /* Bloc droit bas — Voir plus loin */
-    .benefice-right-text {
-      background: #FFFFFF;
-      border-radius: 10px;
+    .benefice-right-tall-text {
+      flex: 0 0 50%;
       padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      transition: transform 300ms ease, box-shadow 300ms ease;
-    }
-    .benefice-right-text:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
     .benefice-trait {
       width: 32px;
@@ -389,12 +399,12 @@
       margin-bottom: 14px;
       flex-shrink: 0;
     }
-    .benefice-right-text h3 {
+    .benefice-right-tall-text h3 {
       font-family: 'Brockmann', sans-serif;
       color: #1A1A1A;
       line-height: 1.3;
     }
-    .benefice-right-text p { margin-top: 8px; }
+    .benefice-right-tall-text p { margin-top: 8px; }
     .benefice-card-sm {
       background: #FFFFFF;
       border-radius: 10px;
@@ -537,20 +547,41 @@
       cursor: default;
     }
 
-    /* ── FORMULAIRE — dark + halo or, 2 colonnes ────────────── */
+    /* ── FORMULAIRE — dark + halo or + mesh animé ───────────── */
     #form-section {
       background:
-        radial-gradient(ellipse at 50% 100%, rgba(200,150,12,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse at 30% 100%, rgba(200,150,12,0.08) 0%, transparent 60%),
         var(--bg-dark);
       padding: 100px 80px;
+      position: relative;
+    }
+    #formCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(200,150,12,0.4); }
+      50%       { box-shadow: 0 0 0 8px rgba(200,150,12,0); }
     }
     .form-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
     }
     /* — colonne gauche : pitch */
+    .form-bullet-dot {
+      color: #C8960C;
+      font-size: 1.2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
     .form-pitch-title {
       font-family: 'Brockmann', sans-serif;
       font-size: clamp(1.8rem, 3vw, 2.5rem);
@@ -605,7 +636,11 @@
       transition: border-color 0.2s;
     }
     .request-form input::placeholder { color: rgba(255,255,255,0.4); }
-    .request-form input:focus { border-color: #C8960C; }
+    .request-form input:focus {
+      border-color: #C8960C;
+      box-shadow: 0 0 0 3px rgba(200,150,12,0.15);
+      transition: border-color 200ms, box-shadow 200ms;
+    }
     .form-invite-sep {
       border: none;
       border-top: 1px solid rgba(255,255,255,0.1);
@@ -638,6 +673,7 @@
       margin-top: 4px;
     }
     .btn-submit:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-submit { animation: pulse-gold 2.5s infinite; }
     .form-reassurance {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.8rem;
@@ -717,7 +753,7 @@
      NAV
 ════════════════════════════════ -->
 <nav>
-  <img src="logo_primary_blanc.svg" alt="Primary" class="nav-primary-logo" />
+  <img src="etoile.svg" alt="Primary" class="nav-primary-logo" />
   <a href="#form-section" class="btn-gold">Demander une invitation →</a>
 </nav>
 
@@ -839,8 +875,32 @@
 
   <div class="benefices-mosaic">
 
-    <!-- Ligne 1 gauche : Faire progresser -->
+    <!-- Ligne 1 gauche : Voir plus loin + voix2.png -->
     <div class="benefice-card-sm" data-benefice-delay="0">
+      <div class="benefice-card-sm-photo-wrap">
+        <img src="voix2.png" alt="" />
+      </div>
+      <div class="benefice-card-sm-text">
+        <div class="benefice-trait-sm"></div>
+        <h3>Voir plus loin</h3>
+        <p class="block-subtitle">Chercheurs, entrepreneurs et médecins qui ouvrent de nouvelles perspectives.</p>
+      </div>
+    </div>
+
+    <!-- Droite pleine hauteur : soiree5.png + Se retrouver -->
+    <div class="benefice-right-tall" data-benefice-delay="150">
+      <div class="benefice-right-tall-photo">
+        <img src="soiree5.png" alt="" />
+      </div>
+      <div class="benefice-right-tall-text">
+        <div class="benefice-trait"></div>
+        <h3>Se retrouver</h3>
+        <p class="block-subtitle">Un cadre intime, une bonne ambiance, des pairs curieux et animés comme vous.</p>
+      </div>
+    </div>
+
+    <!-- Ligne 2 gauche : Faire progresser + tips3.png -->
+    <div class="benefice-card-sm" data-benefice-delay="300">
       <div class="benefice-card-sm-photo-wrap">
         <img src="tips3.png" alt="" style="object-position: center top" />
       </div>
@@ -849,30 +909,6 @@
         <h3>Faire progresser sa pratique</h3>
         <p class="block-subtitle">Ce que font concrètement les médecins qui ont sauté le pas, applicable dès demain.</p>
       </div>
-    </div>
-
-    <!-- Ligne 1 droite : photo voix2 -->
-    <div class="benefice-right-photo" data-benefice-delay="150">
-      <img src="voix2.png" alt="" />
-    </div>
-
-    <!-- Ligne 2 gauche : Se retrouver -->
-    <div class="benefice-card-sm" data-benefice-delay="300">
-      <div class="benefice-card-sm-photo-wrap">
-        <img src="soiree5.png" alt="" style="object-position: center top" />
-      </div>
-      <div class="benefice-card-sm-text">
-        <div class="benefice-trait-sm"></div>
-        <h3>Se retrouver</h3>
-        <p class="block-subtitle">Un cadre intime, une bonne ambiance, des pairs curieux et animés comme vous.</p>
-      </div>
-    </div>
-
-    <!-- Ligne 2 droite : Voir plus loin -->
-    <div class="benefice-right-text" data-benefice-delay="450">
-      <div class="benefice-trait"></div>
-      <h3>Voir plus loin</h3>
-      <p class="block-subtitle">Chercheurs, entrepreneurs et médecins qui ouvrent de nouvelles perspectives.</p>
     </div>
 
   </div>
@@ -918,34 +954,36 @@
 ════════════════════════════════ -->
 <section id="form-section" class="grain">
 
+  <canvas id="formCanvas" aria-hidden="true"></canvas>
+
   <div class="form-grid">
 
     <!-- Colonne gauche — pitch -->
-    <div class="animate-in">
+    <div class="form-left">
       <h2 class="form-pitch-title">Soyez des nôtres.</h2>
-      <p class="form-pitch-sub">Les places sont limitées, demandez votre invitation dès maintenant.</p>
+      <p class="form-pitch-sub">Demandez dès maintenant votre invitation, les places sont comptées.</p>
       <ul class="form-bullets">
         <li class="form-bullet">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Tables rondes &amp; conférences</span>
-        </li>
-        <li class="form-bullet">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Cocktail &amp; soirée</span>
-        </li>
-        <li class="form-bullet">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="form-bullet-dot">•</span>
           <span>Gratuit pour les médecins</span>
         </li>
         <li class="form-bullet">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8960C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>150 places</span>
+          <span class="form-bullet-dot">•</span>
+          <span>Places limitées · 150 participants sélectionnés</span>
+        </li>
+        <li class="form-bullet">
+          <span class="form-bullet-dot">•</span>
+          <span>Tables rondes &amp; soirée entre pairs</span>
+        </li>
+        <li class="form-bullet">
+          <span class="form-bullet-dot">•</span>
+          <span>Rencontres avec chercheurs et entrepreneurs</span>
         </li>
       </ul>
     </div>
 
     <!-- Colonne droite — formulaire -->
-    <form class="request-form animate-in" action="#" method="POST" novalidate style="transition-delay:.1s">
+    <form class="request-form form-right" action="#" method="POST" novalidate>
 
       <div class="form-row-2">
         <input type="text"  name="prenom"    placeholder="Prénom *" />
@@ -956,14 +994,14 @@
 
       <hr class="form-invite-sep" />
       <p class="form-invite-label">Invitez un confrère</p>
-      <p class="form-invite-hint">Vous pouvez inviter un confrère. Son invitation sera liée à la vôtre.</p>
+      <p class="form-invite-hint">Vous connaissez quelqu'un qui ne devrait pas manquer ça ?</p>
       <div class="form-row-2">
         <input type="text"  name="c_prenom" placeholder="Prénom &amp; Nom" />
         <input type="email" name="c_email"  placeholder="Email" />
       </div>
 
       <button type="submit" class="btn-submit">Envoyer ma demande →</button>
-      <p class="form-reassurance">Votre demande sera examinée sous 72h. Nous vous répondrons par email.</p>
+      <p class="form-reassurance">On revient vers vous sous 72h par email.</p>
 
     </form>
 
@@ -1114,7 +1152,7 @@
 
   /* Benefice reveal — stagger */
   (function () {
-    var items = document.querySelectorAll('.benefice-card-sm, .benefice-right-photo, .benefice-right-text');
+    var items = document.querySelectorAll('.benefice-card-sm, .benefice-right-tall');
     items.forEach(function (el) {
       el.style.opacity = '0';
       el.style.transform = 'translateY(24px)';
@@ -1206,6 +1244,86 @@
 
     /* état initial */
     update();
+  })();
+
+  /* Form canvas — mesh orbes gold */
+  (function () {
+    var canvas = document.getElementById('formCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var orbs = [
+      { x: 0.2, y: 0.8, r: 0.5, speedX: 0.00006, speedY: 0.00004 },
+      { x: 0.8, y: 0.5, r: 0.4, speedX: -0.00005, speedY: 0.00007 }
+    ];
+    var t = 0;
+    function draw() {
+      t++;
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      orbs.forEach(function (orb) {
+        var x = (orb.x + Math.sin(t * orb.speedX * 1000) * 0.2) * canvas.width;
+        var y = (orb.y + Math.cos(t * orb.speedY * 1000) * 0.2) * canvas.height;
+        var r = orb.r * Math.max(canvas.width, canvas.height);
+        var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, 'rgba(200,150,12,0.08)');
+        g.addColorStop(1, 'rgba(200,150,12,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* Form — scroll reveal colonnes */
+  (function () {
+    var formLeft  = document.querySelector('.form-left');
+    var formRight = document.querySelector('.form-right');
+    if (!formLeft || !formRight) return;
+
+    formLeft.style.opacity   = '0';
+    formLeft.style.transform = 'translateX(-30px)';
+    formLeft.style.transition = 'opacity 700ms ease-out, transform 700ms ease-out';
+
+    formRight.style.opacity   = '0';
+    formRight.style.transform = 'translateX(30px)';
+    formRight.style.transition = 'opacity 700ms ease-out 150ms, transform 700ms ease-out 150ms';
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.style.opacity   = '1';
+          e.target.style.transform = 'translateX(0)';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    io.observe(formLeft);
+    io.observe(formRight);
+  })();
+
+  /* Form — stagger bullets */
+  (function () {
+    document.querySelectorAll('.form-bullet').forEach(function (b, i) {
+      b.style.opacity   = '0';
+      b.style.transform = 'translateX(-16px)';
+      b.style.transition = 'opacity 500ms ease-out ' + (300 + i * 100) + 'ms, transform 500ms ease-out ' + (300 + i * 100) + 'ms';
+    });
+    var bulletObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.form-bullet').forEach(function (b) {
+            b.style.opacity   = '1';
+            b.style.transform = 'translateX(0)';
+          });
+          bulletObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    var fl = document.querySelector('.form-left');
+    if (fl) bulletObserver.observe(fl);
   })();
 </script>
 
