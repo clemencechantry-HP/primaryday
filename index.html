@@ -548,21 +548,14 @@
       cursor: default;
     }
 
-    /* ── FORMULAIRE — dark + halo or + mesh animé ───────────── */
+    /* ── FORMULAIRE ─────────────────────────────────────────── */
     #form-section {
-      background:
-        radial-gradient(ellipse at 30% 100%, rgba(200,150,12,0.08) 0%, transparent 60%),
-        var(--bg-dark);
+      background: var(--bg-dark);
       padding: 100px 80px;
       position: relative;
     }
     #formCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
+      display: none;
     }
     @keyframes pulse-gold {
       0%, 100% { box-shadow: 0 0 0 0 rgba(200,150,12,0.4); }
@@ -955,8 +948,6 @@
 ════════════════════════════════ -->
 <section id="form-section" class="grain">
 
-  <canvas id="formCanvas" aria-hidden="true"></canvas>
-
   <div class="form-grid">
 
     <!-- Colonne gauche — pitch -->
@@ -1247,35 +1238,6 @@
     update();
   })();
 
-  /* Form canvas — mesh orbes gold */
-  (function () {
-    var canvas = document.getElementById('formCanvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var orbs = [
-      { x: 0.2, y: 0.8, r: 0.5, speedX: 0.00006, speedY: 0.00004 },
-      { x: 0.8, y: 0.5, r: 0.4, speedX: -0.00005, speedY: 0.00007 }
-    ];
-    var t = 0;
-    function draw() {
-      t++;
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      orbs.forEach(function (orb) {
-        var x = (orb.x + Math.sin(t * orb.speedX * 1000) * 0.2) * canvas.width;
-        var y = (orb.y + Math.cos(t * orb.speedY * 1000) * 0.2) * canvas.height;
-        var r = orb.r * Math.max(canvas.width, canvas.height);
-        var g = ctx.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0, 'rgba(200,150,12,0.08)');
-        g.addColorStop(1, 'rgba(200,150,12,0)');
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  })();
 
   /* Form — scroll reveal colonnes */
   (function () {
