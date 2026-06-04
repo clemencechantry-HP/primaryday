@@ -396,9 +396,9 @@
     .benefices-mosaic {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: auto auto;
       gap: 16px;
-      align-items: stretch;
+      align-items: start;
     }
     /* Bloc droit haut — photo seule */
     /* Bloc droit — pleine hauteur, photo + texte */
@@ -413,7 +413,7 @@
       transition: transform 300ms ease, box-shadow 300ms ease;
     }
     .benefice-right-tall-photo {
-      flex: 0 0 50%;
+      flex: 0 0 55%;
       min-height: 0;
       position: relative;
       overflow: hidden;
@@ -434,8 +434,8 @@
       pointer-events: none;
     }
     .benefice-right-tall-text {
-      flex: 0 0 50%;
-      padding: 28px;
+      flex: 0 0 45%;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -466,6 +466,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 10px 0 0 10px;
+      height: 200px;
     }
     .benefice-card-sm-photo-wrap img {
       width: 100%;
@@ -482,7 +483,7 @@
       pointer-events: none;
     }
     .benefice-card-sm-text {
-      padding: 28px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: center;
