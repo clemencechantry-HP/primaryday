@@ -320,7 +320,16 @@
       padding: 40px;
       position: relative;
       overflow: hidden;
+      transition: background 300ms ease, box-shadow 300ms ease;
     }
+    .theme-card:hover {
+      background: rgba(58,28,51,0.6);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 16px 40px rgba(58,28,51,0.2);
+    }
+    .theme-card:hover .theme-title { color: #F0F0F0; transition: color 300ms; }
+    .theme-card:hover .theme-subtitle { color: rgba(255,255,255,0.55); transition: color 300ms; }
+    .theme-card:hover .theme-tag { border-color: rgba(200,150,12,0.8); }
     .theme-number {
       font-family: 'Brockmann', sans-serif;
       font-size: 80px;
@@ -407,10 +416,6 @@
       flex-direction: column;
       transition: transform 300ms ease, box-shadow 300ms ease;
     }
-    .benefice-right-tall:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
     .benefice-right-tall-photo {
       flex: 0 0 50%;
       min-height: 0;
@@ -460,10 +465,6 @@
       grid-template-columns: 1fr 1fr;
       flex: 1;
       transition: transform 300ms ease, box-shadow 300ms ease;
-    }
-    .benefice-card-sm:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
     .benefice-card-sm-photo-wrap {
       position: relative;
