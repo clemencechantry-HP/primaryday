@@ -295,10 +295,10 @@
       color: rgba(255,255,255,0.4);
     }
 
-    /* ── THÈMES — light, grille typographique ───────────────── */
+    /* ── THÈMES — light, cards ───────────────────────────────── */
     #themes {
       background: var(--bg-light);
-      padding: 80px;
+      padding: 100px 64px;
     }
     .section-title-serif {
       color: var(--text-dark);
@@ -306,12 +306,33 @@
     }
     #themes .section-title-serif {
       color: #1A1A1A;
-      margin-bottom: 64px;
+      margin-bottom: 80px;
     }
     .themes-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 64px;
+      gap: 48px;
+    }
+    .theme-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 300ms ease;
+      cursor: pointer;
+    }
+    .theme-number {
+      font-family: 'Brockmann', sans-serif;
+      font-size: 80px;
+      font-weight: 700;
+      color: rgba(200,150,12,0.06);
+      position: absolute;
+      top: -20px;
+      right: -10px;
+      pointer-events: none;
+      line-height: 1;
     }
     .theme-tag {
       display: inline-block;
@@ -326,6 +347,7 @@
       padding: 5px 12px;
       background: transparent;
       margin-bottom: 24px;
+      transition: border-color 300ms;
     }
     .theme-col-title {
       font-family: 'Brockmann', sans-serif;
@@ -333,6 +355,7 @@
       font-weight: 600;
       color: #1A1A1A;
       line-height: 1.2;
+      transition: color 300ms;
     }
     .theme-title {
       margin-top: 0;
@@ -341,11 +364,20 @@
     .theme-subtitle {
       margin-top: 0;
       font-family: 'Instrument Sans', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       color: #6B7280;
       line-height: 1.7;
+      transition: color 300ms;
     }
-    /* .theme-col-sub — style from .block-subtitle */
+    .theme-card:hover {
+      background: rgba(58,28,51,0.6);
+      backdrop-filter: blur(4px);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(58,28,51,0.2);
+    }
+    .theme-card:hover .theme-title { color: #F0F0F0; }
+    .theme-card:hover .theme-subtitle { color: rgba(255,255,255,0.55); }
+    .theme-card:hover .theme-tag { border-color: rgba(200,150,12,0.8); }
     /* Séparateur gold animé thèmes → bénéfices */
     .themes-benefices-sep {
       height: 1px;
@@ -866,19 +898,22 @@
 
   <div class="themes-grid">
 
-    <div class="theme-col" data-theme-delay="0">
+    <div class="theme-card theme-col" data-theme-delay="0">
+      <span class="theme-number">01</span>
       <span class="theme-tag">IA &amp; CLINIQUE</span>
       <h3 class="theme-col-title theme-title">L'IA propose.<br>Qui valide&nbsp;?</h3>
       <p class="theme-subtitle">La question n'est plus si l'IA entre dans la consultation, mais comment garder la main.</p>
     </div>
 
-    <div class="theme-col" data-theme-delay="150">
+    <div class="theme-card theme-col" data-theme-delay="150">
+      <span class="theme-number">02</span>
       <span class="theme-tag">LONGÉVITÉ</span>
       <h3 class="theme-col-title theme-title">Vivre plus longtemps. Soigner autrement.</h3>
       <p class="theme-subtitle">Comment redevenir l'allié santé de toute une vie&nbsp;?</p>
     </div>
 
-    <div class="theme-col" data-theme-delay="300">
+    <div class="theme-card theme-col" data-theme-delay="300">
+      <span class="theme-number">03</span>
       <span class="theme-tag">COLLECTIF</span>
       <h3 class="theme-col-title theme-title">Seul,<br>c'est fini&nbsp;?</h3>
       <p class="theme-subtitle">Équipe, tech, institutions — quel système mobiliser autour du médecin&nbsp;?</p>
