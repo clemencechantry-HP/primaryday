@@ -613,41 +613,41 @@
       align-items: start;
     }
     /* — colonne gauche : pitch */
+    .form-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
     .form-bullet-dot {
       color: #C8960C;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       line-height: 1;
       flex-shrink: 0;
     }
     .form-pitch-title {
       font-family: 'Brockmann', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      line-height: 1.15;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.1;
       color: #F0F0F0;
-    }
-    .form-pitch-sub {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.6);
-      margin-top: 16px;
-      line-height: 1.6;
+      margin-bottom: 48px;
     }
     .form-bullets {
       list-style: none;
-      margin-top: 32px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
     .form-bullet {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
     .form-bullet span {
       font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #F0F0F0;
+      line-height: 1.5;
     }
     /* — colonne droite : formulaire */
     .request-form {
@@ -1010,7 +1010,7 @@
         </li>
         <li class="form-bullet">
           <span class="form-bullet-dot">•</span>
-          <span>Places limitées · 150 participants sélectionnés</span>
+          <span>Places limitées à 150 participants</span>
         </li>
         <li class="form-bullet">
           <span class="form-bullet-dot">•</span>
@@ -1018,7 +1018,7 @@
         </li>
         <li class="form-bullet">
           <span class="form-bullet-dot">•</span>
-          <span>Rencontres avec chercheurs et entrepreneurs</span>
+          <span>Le meilleur de l'écosystème tech-santé</span>
         </li>
       </ul>
     </div>
