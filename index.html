@@ -88,15 +88,22 @@
     }
     .grain > * { position: relative; z-index: 1; }
 
+    /* ── HERO WRAPPER — nav + hero d'un seul tenant ────────── */
+    .hero-wrapper {
+      position: relative;
+      background:
+        radial-gradient(ellipse at 60% 20%, rgba(124,58,237,0.12) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
+        var(--bg-dark-hero);
+      background-blend-mode: normal, overlay, normal;
+    }
+
     /* ── NAV ───────────────────────────────────────────────── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(42,20,40,0.96);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-dark);
+      background: transparent;
       height: 60px;
       padding: 0 6%;
       display: flex;
@@ -125,14 +132,10 @@
     }
     .btn-gold:hover { background: #B8850B; transform: translateY(-1px); }
 
-    /* ── HERO — canvas mesh ────────────────────────────────── */
+    /* ── HERO ───────────────────────────────────────────────── */
     #hero {
       position: relative;
-      background:
-        radial-gradient(ellipse at 60% 20%, rgba(124,58,237,0.12) 0%, transparent 70%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
-        var(--bg-dark-hero);
-      background-blend-mode: normal, overlay, normal;
+      background: transparent;
       padding: 130px 6% 0;
       text-align: center;
       overflow: hidden;
@@ -751,6 +754,8 @@
 <!-- ════════════════════════════════
      NAV
 ════════════════════════════════ -->
+<div class="hero-wrapper">
+
 <nav>
   <img src="logo_primary_blanc.svg" alt="Primary" class="nav-primary-logo" />
   <a href="#form-section" class="btn-gold">Demander une invitation →</a>
@@ -759,7 +764,7 @@
 <!-- ════════════════════════════════
      HERO — canvas mesh
 ════════════════════════════════ -->
-<section id="hero" class="grain">
+<section id="hero">
 
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
@@ -803,6 +808,8 @@
   </div>
 
 </section>
+
+</div><!-- /hero-wrapper -->
 
 <!-- ════════════════════════════════
      MANIFESTO — light
