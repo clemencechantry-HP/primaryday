@@ -22,7 +22,8 @@
 
     /* ── VARIABLES ─────────────────────────────────────────── */
     :root {
-      --bg-dark:       #0D1117;
+      --bg-dark:       #1A0D18;
+      --bg-dark-hero:  #2A1428;
       --bg-dark-alt:   #161B22;
       --bg-light:      #F8F7F4;
       --bg-light-alt:  #EFEDE8;
@@ -103,9 +104,9 @@
       justify-content: space-between;
     }
     .nav-primary-logo {
-      height: 28px;
+      height: 22px;
       width: auto;
-      opacity: 0.9;
+      opacity: 0.7;
     }
     .btn-gold {
       display: inline-block;
@@ -127,7 +128,11 @@
     /* ── HERO — canvas mesh ────────────────────────────────── */
     #hero {
       position: relative;
-      background: var(--bg-dark);
+      background:
+        radial-gradient(ellipse at 60% 20%, rgba(124,58,237,0.12) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
+        var(--bg-dark-hero);
+      background-blend-mode: normal, overlay, normal;
       padding: 130px 6% 0;
       text-align: center;
       overflow: hidden;
@@ -151,11 +156,11 @@
     .hero-cartouche {
       display: inline-block;
       border: 1px solid rgba(200,150,12,0.5);
-      border-radius: 4px;
-      padding: 6px 16px;
+      border-radius: 6px;
+      padding: 5px 14px;
       font-family: 'Brockmann', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: rgba(255,255,255,0.6);
@@ -747,7 +752,7 @@
      NAV
 ════════════════════════════════ -->
 <nav>
-  <img src="etoile.svg" alt="Primary" class="nav-primary-logo" />
+  <img src="logo_primary_blanc.svg" alt="Primary" class="nav-primary-logo" />
   <a href="#form-section" class="btn-gold">Demander une invitation →</a>
 </nav>
 
@@ -760,7 +765,7 @@
 
   <div class="hero-content">
 
-    <p class="hero-cartouche animate-in">Primary Day · 2026</p>
+    <p class="hero-cartouche animate-in">Primary Care Day</p>
 
     <div class="hero-meta meta-info animate-in" style="transition-delay:.06s">
       <span class="hero-meta-item">
