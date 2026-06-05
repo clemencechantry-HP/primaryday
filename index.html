@@ -149,7 +149,7 @@
     #hero {
       position: relative;
       background: transparent;
-      padding: 130px 6% 0;
+      padding: 52px 6% 48px;
       text-align: center;
       overflow: hidden;
     }
@@ -167,7 +167,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 36px;
+      gap: 0;
     }
     .hero-cartouche {
       display: inline-block;
@@ -180,6 +180,7 @@
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
     }
     .hero-meta {
       display: flex;
@@ -188,7 +189,10 @@
       flex-wrap: wrap;
       justify-content: center;
       font-size: 0.9rem;
+      margin-bottom: 24px;
+      color: rgba(255,255,255,0.65);
     }
+    .hero-meta * { color: rgba(255,255,255,0.65); }
     .hero-meta-item {
       display: flex;
       align-items: center;
@@ -199,6 +203,8 @@
       font-size: clamp(2.8rem, 5vw, 4rem);
       line-height: 1.05;
       color: #F0F0F0;
+      margin-top: 8px;
+      margin-bottom: 28px;
     }
     .hero-sub {
       font-family: 'Instrument Sans', sans-serif;
@@ -206,6 +212,7 @@
       line-height: 1.65;
       color: rgba(255,255,255,0.55);
       max-width: 560px;
+      margin-bottom: 28px;
     }
     #hero .btn-gold {
       color: #1A1A1A;
@@ -220,7 +227,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       height: 320px;
-      margin-top: 130px;
+      margin-top: 52px;
       width: 100%;
     }
     .hero-photos img {
@@ -298,7 +305,7 @@
     /* ── THÈMES — light, cards ───────────────────────────────── */
     #themes {
       background: var(--bg-light);
-      padding: 120px 80px 80px;
+      padding: 80px 80px 80px;
     }
     .section-title-serif {
       color: var(--text-dark);
@@ -306,12 +313,12 @@
     }
     #themes .section-title-serif {
       color: #1A1A1A;
-      margin-bottom: 96px;
+      margin-bottom: 40px;
     }
     .themes-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
       max-width: 1104px;
       margin: 0 auto;
     }
@@ -369,9 +376,9 @@
     .theme-subtitle {
       margin-top: 0;
       font-family: 'Instrument Sans', sans-serif;
-      font-size: 1.1rem;
+      font-size: 14px;
       color: #6B7280;
-      line-height: 1.8;
+      line-height: 1.7;
       transition: color 300ms;
     }
     /* Séparateur gold animé thèmes → bénéfices */
@@ -785,9 +792,9 @@
 
 <nav>
   <div style="display:flex;align-items:center;gap:16px;">
-    <img src="PCD3nav.svg" alt="Primary Care Day" class="nav-primary-logo" style="display:block;vertical-align:middle;" />
-    <span style="display:inline-flex;align-items:center;align-self:center;height:1.2em;opacity:0.4;color:rgba(255,255,255,0.3);">|</span>
-    <span style="display:inline-flex;align-items:center;font-family:'Instrument Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;line-height:1;">PARIS 2026</span>
+    <img src="PCD3nav.svg" alt="Primary Care Day" class="nav-primary-logo" style="display:block;" />
+    <span style="display:block;width:1px;height:16px;background:rgba(255,255,255,0.25);align-self:center;transform:translateY(6px);"></span>
+    <span style="display:inline-flex;align-items:center;font-family:'Instrument Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;line-height:1;transform:translateY(6px);">PARIS 2026</span>
   </div>
   <a href="#form-section" class="btn-gold">Demander une invitation →</a>
 </nav>
@@ -801,7 +808,7 @@
 
   <div class="hero-content">
 
-    <p class="hero-cartouche animate-in">Primary Care Day</p>
+
 
     <div class="hero-meta meta-info animate-in" style="transition-delay:.06s">
       <span class="hero-meta-item">
@@ -892,6 +899,13 @@
       <span class="theme-tag">SOIN &amp; PRÉVENTION</span>
       <h3 class="theme-col-title theme-title">Longévité et médecine prédictive</h3>
       <p class="theme-subtitle">D'une médecine réactive à une médecine proactive, comment redevenir l'allié santé de toute une vie&nbsp;?</p>
+    </div>
+
+    <div class="theme-card theme-col" data-theme-delay="300">
+      <span class="theme-number">03</span>
+      <span class="theme-tag">IA &amp; SPÉCIALISATION</span>
+      <h3 class="theme-col-title theme-title">Le médecin augmenté</h3>
+      <p class="theme-subtitle">La pré-spécialisation ouvre de nouveaux territoires au généraliste. Sommeil, cardio, santé de la femme, jusqu'où aller&nbsp;?</p>
     </div>
 
   </div>
