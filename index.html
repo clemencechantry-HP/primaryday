@@ -375,16 +375,6 @@
       transition: color 300ms;
     }
     /* Séparateur gold animé thèmes → bénéfices */
-    .themes-benefices-sep {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #C8960C, transparent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 800ms ease-out;
-    }
-    .themes-benefices-sep.visible {
-      transform: scaleX(1);
-    }
 
     /* ── BÉNÉFICES — light-alt, mosaïque ───────────────────── */
     #benefices {
@@ -903,7 +893,6 @@
   </div>
 </section>
 
-<div class="themes-benefices-sep" id="themes-sep"></div>
 
 <!-- ════════════════════════════════
      BÉNÉFICES — light, mosaïque
@@ -1174,17 +1163,6 @@
     document.querySelectorAll('.theme-col').forEach(col => observer.observe(col));
   }, 100);
 
-  /* Séparateur gold thèmes → bénéfices */
-  (function () {
-    var sep = document.getElementById('themes-sep');
-    if (!sep) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { sep.classList.add('visible'); io.unobserve(sep); }
-      });
-    }, { threshold: 0.5 });
-    io.observe(sep);
-  })();
 
   /* Benefice reveal — stagger */
   (function () {
