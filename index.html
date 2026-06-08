@@ -122,6 +122,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: background 300ms ease;
+    }
+    nav.scrolled {
+      background: var(--bg-dark-hero);
     }
     .nav-primary-logo {
       height: 32px;
@@ -1065,6 +1069,20 @@
 ════════════════════════════════ -->
 <script>
   /* Hero — stagger content + photos on load */
+  /* ── NAV scroll background ─────────────────────────────── */
+  (function () {
+    var nav = document.querySelector('nav');
+    function onScroll() {
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
   document.addEventListener('DOMContentLoaded', function () {
     /* Content elements: cartouche, meta, title, sub, CTA */
     var heroEls = document.querySelectorAll('.hero-content .animate-in');
