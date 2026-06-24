@@ -663,7 +663,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-    .request-form input {
+    .request-form input,
+    .request-form select {
       width: 100%;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.15);
@@ -676,7 +677,20 @@
       transition: border-color 0.2s;
     }
     .request-form input::placeholder { color: rgba(255,255,255,0.4); }
-    .request-form input:focus {
+    .request-form select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .request-form select.placeholder { color: rgba(255,255,255,0.4); }
+    .request-form select option { color: #1A1A1A; background: #fff; }
+    .request-form input:focus,
+    .request-form select:focus {
       border-color: #C8960C;
       box-shadow: 0 0 0 3px rgba(200,150,12,0.15);
       transition: border-color 200ms, box-shadow 200ms;
@@ -834,7 +848,7 @@
     <h1 class="hero-theme animate-in" style="transition-delay:.12s">Le futur du soin primaire</h1>
 
     <p class="hero-sub animate-in" style="transition-delay:.18s">
-      Le rendez-vous des généralistes qui prennent un temps d'avance&nbsp;:<br>des discussions de fond entre pionniers, pour repenser votre pratique.
+      Médecins, entrepreneurs et experts, enfin réunis pour façonner la médecine générale de demain.
     </p>
 
     <a href="#form-section" class="btn-gold animate-in" style="transition-delay:.24s">
@@ -863,7 +877,7 @@
       La médecine générale n'a jamais autant changé.<br>L'IA entre dans la consultation. La prévention redéfinit le rôle du médecin. Le collectif devient le nouveau mode d'exercice.
     </p>
     <p class="manifesto-p-muted block-subtitle animate-in" style="transition-delay:.1s">
-      PRIMARY CARE DAY réunit les médecins, chercheurs et entrepreneurs qui écrivent la suite.
+      PRIMARY CARE DAY réunit les médecins, entrepreneurs et experts qui écrivent la suite.
     </p>
   </div>
 
@@ -1041,15 +1055,17 @@
         <input type="text"  name="nom"       placeholder="Nom *" />
       </div>
       <input type="email"   name="email"     placeholder="Email professionnel *" />
-      <input type="text"    name="specialite" placeholder="Spécialité *" />
-
-      <hr class="form-invite-sep" />
-      <p class="form-invite-label">Invitez un confrère</p>
-      <p class="form-invite-hint">Vous connaissez quelqu'un qui ne devrait pas manquer ça ?</p>
-      <div class="form-row-2">
-        <input type="text"  name="c_prenom" placeholder="Prénom &amp; Nom" />
-        <input type="email" name="c_email"  placeholder="Email" />
-      </div>
+      <select name="profession" class="placeholder" required>
+        <option value="" disabled selected hidden>Profession *</option>
+        <option value="medecin_generaliste">Médecin généraliste</option>
+        <option value="medecin_specialiste">Médecin spécialiste</option>
+        <option value="assistante_medicale">Assistante médicale</option>
+        <option value="expert">Expert</option>
+        <option value="media">Média</option>
+        <option value="entrepreneur">Entrepreneur</option>
+        <option value="autre">Autre</option>
+      </select>
+      <input type="text"    name="code_parrain" placeholder="Code parrain" />
 
       <button type="submit" class="btn-submit">Je veux en être →</button>
       <p class="form-reassurance">On revient vers vous sous 72h par email.</p>
@@ -1236,9 +1252,16 @@
   (function () {
     var form = document.querySelector('.request-form');
     if (!form) return;
+    var sel = form.querySelector('select[name="profession"]');
+    if (sel) {
+      sel.addEventListener('change', function () {
+        if (sel.value) { sel.classList.remove('placeholder'); }
+        else { sel.classList.add('placeholder'); }
+      });
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var fields = ['prenom','nom','email','specialite'];
+      var fields = ['prenom','nom','email','profession'];
       var ok = true;
       fields.forEach(function (n) {
         var inp = form.querySelector('[name="' + n + '"]');
