@@ -387,6 +387,74 @@
     }
     /* Séparateur gold animé thèmes → bénéfices */
 
+    /* ── BANDEAU PARTICIPANTS — dark · immersif (raccord hero) ─ */
+    #participants {
+      background: var(--bg-dark-hero);
+      padding: 46px 40px;
+    }
+    .participants-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px 56px;
+    }
+    .participants-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-gold);
+      white-space: nowrap;
+    }
+    .participants-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 52px;
+    }
+    .participants-logos img {
+      max-width: 160px;
+      object-fit: contain;
+      opacity: 0.85;
+      transition: opacity 220ms ease;
+    }
+    .participants-logos img.p-lucis    { height: 25px; }
+    .participants-logos img.p-alan     { height: 28px; }
+    .participants-logos img.p-riva     { height: 23px; }
+    .participants-logos img.p-withings { height: 17px; }
+    .participants-logos img:hover { opacity: 1; }
+    .participants-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-gold);
+      background: rgba(200,150,12,0.14);
+      border: 1px solid rgba(200,150,12,0.45);
+      border-radius: 100px;
+      padding: 5px 14px;
+      white-space: nowrap;
+    }
+    .participants-pill svg { width: 12px; height: 12px; }
+    @media (max-width: 760px) {
+      #participants { padding: 34px 24px; }
+      .participants-inner { gap: 18px 28px; }
+      .participants-logos { gap: 30px; }
+      .participants-logos img.p-lucis    { height: 20px; }
+      .participants-logos img.p-alan     { height: 23px; }
+      .participants-logos img.p-riva     { height: 19px; }
+      .participants-logos img.p-withings { height: 14px; }
+    }
+
     /* ── BÉNÉFICES — light-alt, mosaïque ───────────────────── */
     #benefices {
       background: var(--bg-light-alt);
@@ -868,6 +936,25 @@
 </div><!-- /hero-wrapper -->
 
 <!-- ════════════════════════════════
+     BANDEAU PARTICIPANTS — light · trust bar
+════════════════════════════════ -->
+<section id="participants">
+  <div class="participants-inner">
+    <span class="participants-eyebrow">Avec la participation de</span>
+    <div class="participants-logos">
+      <img src="logo_lucis_w.png" alt="Lucis" class="p-lucis" />
+      <img src="logo_alan_w.png" alt="Alan" class="p-alan" />
+      <img src="logo_riva_w.png" alt="Riva Santé" class="p-riva" />
+      <img src="logo_withings_w.png" alt="Withings" class="p-withings" />
+    </div>
+    <span class="participants-pill">
+      <svg viewBox="0 0 24 24" fill="#C8960C" aria-hidden="true"><path d="M12 2l2.4 6.9L21 11l-6.6 2.1L12 20l-2.4-6.9L3 11l6.6-2.1z"/></svg>
+      Intervenants dévoilés bientôt
+    </span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
      MANIFESTO — light
 ════════════════════════════════ -->
 <section id="manifesto">
@@ -928,7 +1015,6 @@
 
   </div>
 </section>
-
 
 <!-- ════════════════════════════════
      BÉNÉFICES — light, mosaïque
